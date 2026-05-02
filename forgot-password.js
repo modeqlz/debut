@@ -1,3 +1,5 @@
+import { supabase } from './supabase.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     const emailInput = document.getElementById('email');
@@ -57,20 +59,24 @@ document.addEventListener('DOMContentLoaded', () => {
         formMessage.className = 'form-message';
 
         try {
-            // Имитация задержки сети (1.5 секунды)
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const { data, error } = await supabase.auth.resetPasswordForEmail(emailValue);
 
-            // Простая логика успеха для демонстрации
-            formMessage.textContent = 'Инструкции отправлены на ваш E-Mail!';
+            if (error) throw error;
+
+            formMessage.textContent = 'Инструкции и код отправлены на ваш E-Mail!';
             formMessage.classList.add('success');
             
+            // Сохраняем данные для проверки кода
+            sessionStorage.setItem('verifyEmail', emailValue);
+            sessionStorage.setItem('verifyType', 'recovery');
+
             // Через 1.5 секунды перенаправляем на страницу ввода кода
             setTimeout(() => {
                 window.location.href = 'verify-code.html';
             }, 1500);
             
         } catch (error) {
-            formMessage.textContent = 'Произошла ошибка. Попробуйте позже.';
+            formMessage.textContent = error.message;
             formMessage.classList.add('error');
         } finally {
             submitBtn.disabled = false;

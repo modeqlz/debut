@@ -1,3 +1,5 @@
+import { supabase } from './supabase.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const verifyCodeForm = document.getElementById('verifyCodeForm');
     const codeInputs = document.querySelectorAll('.code-input');
@@ -5,6 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const formMessage = document.getElementById('formMessage');
     const timerText = document.getElementById('timerText');
     const codeError = document.getElementById('codeError');
+
+    const verifyEmail = sessionStorage.getItem('verifyEmail');
+    const verifyType = sessionStorage.getItem('verifyType');
+
+    if (!verifyEmail || !verifyType) {
+        window.location.href = 'index.html';
+        return;
+    }
 
     // Логика полей ввода кода
     codeInputs.forEach((input, index) => {
@@ -114,17 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
         formMessage.className = 'form-message';
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const { data, error } = await supabase.auth.verifyOtp({
+                email: verifyEmail,
+                token: code,
+                type: verifyType
+            });
 
-            // Для примера правильный код 123456
-            if (code === '123456') {
-                formMessage.textContent = 'Код подтвержден!';
-                formMessage.classList.add('success');
-                // Можно сделать редирект, например на страницу создания нового пароля
-                // window.location.href = 'new-password.html';
-            } else {
-                throw new Error('Неверный код подтверждения');
-            }
+            if (error) throw error;
+
+            formMessage.textContent = 'Код подтвержден!';
+            formMessage.classList.add('success');
+
+            setTimeout(() => {
+                if (verifyType === 'signup') {
+                    window.location.href = 'feed.html';
+                } else if (verifyType === 'recovery') {
+                    window.location.href = 'new-password.html';
+                }
+            }, 1000);
         } catch (error) {
             codeError.textContent = error.message;
             codeError.classList.add('show');

@@ -90,9 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Очищаем форму
             registerForm.reset();
             
-            // Через 2 секунды можно перенаправить на страницу входа
+            // Сохраняем данные для проверки кода
+            sessionStorage.setItem('verifyEmail', emailValue);
+            sessionStorage.setItem('verifyType', 'signup');
+            
+            // Через 2 секунды перенаправляем на страницу ввода кода
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'verify-code.html';
             }, 2000);
             
         } catch (error) {
