@@ -1,0 +1,113 @@
+/* feed.css */
+
+/* Центрирование контейнера ленты, аналогично профилю, но без шапки */
+.feed-container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center; /* Центрируем вкладки по центру макета, как на скриншоте */
+}
+
+/* Вкладки ленты (Для вас, Лента магазина, Подписчики) */
+/* На скриншоте они центрированы по горизонтали и не растянуты на всю ширину */
+.feed-tabs-wrapper {
+    background-color: #1a1a1c;
+    border-radius: 20px;
+    display: flex;
+    padding: 6px;
+    width: fit-content; /* Ширина по контенту */
+}
+
+.feed-tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.feed-tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.feed-tab-btn.active {
+    background-color: #333336;
+    color: var(--text-primary);
+}
+
+/* Блок создания поста (Лента) */
+.feed-create-post {
+    width: 100%;
+    background-color: #1a1a1c;
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 160px; /* Блок на скриншоте довольно высокий */
+    justify-content: space-between;
+}
+
+.feed-post-input-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.feed-post-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--element-bg);
+    flex-shrink: 0;
+}
+
+.feed-post-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px; /* Немного опускаем инпут относительно верха аватарки */
+}
+
+.feed-post-input::placeholder {
+    color: #555555;
+}
+
+.feed-post-actions {
+    display: flex;
+    justify-content: flex-end; /* Кнопка прижата вправо */
+    margin-top: auto; /* Прижимаем к низу блока */
+}
+
+.feed-publish-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: not-allowed;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.feed-publish-btn.active {
+    background-color: var(--text-primary);
+    color: #000;
+    cursor: pointer;
+}
+
+.feed-publish-btn.active:hover {
+    background-color: #e5e5e5;
+}

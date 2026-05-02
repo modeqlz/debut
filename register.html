@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - DDE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">DDE</div>
+        
+        <div class="header">
+            <h1>Создайте аккаунт</h1>
+            <p>Пожалуйста, введите ваши данные</p>
+        </div>
+
+        <form id="registerForm" class="form">
+            <div class="input-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" placeholder="brawlstars@gmail.com" required>
+                <span class="error-message" id="emailError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" placeholder="Минимум 10 символов" required minlength="10">
+                <span class="error-message" id="passwordError"></span>
+            </div>
+
+            <div class="terms-text">
+                Продолжая, вы соглашаетесь с <a href="#">условиями использования</a> и <a href="#">политикой конфиденциальности</a>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Создать аккаунт</button>
+            <div id="formMessage" class="form-message"></div>
+        </form>
+
+        <div class="footer">
+            <p>Уже есть аккаунт? <a href="index.html">Войти</a></p>
+        </div>
+    </div>
+
+    <script type="module" src="register.js"></script>
+</body>
+</html>

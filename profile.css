@@ -1,0 +1,340 @@
+/* profile.css */
+:root {
+    --sidebar-width: 260px;
+    --content-max-width: 650px;
+    
+    /* Дополнительные цвета для профиля */
+    --panel-bg: #1c1c1e; /* Темнее для боковых меню и подложек */
+    --element-bg: #262628; /* Светлее для блоков и активных элементов */
+    --element-hover: #333336;
+    --border-color: #333333;
+    
+    /* Иконки */
+    --icon-size: 20px;
+}
+
+body {
+    background-color: #121212; /* Чуть темнее основного фона для контраста с блоками */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.app-layout {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Sidebar (Левое меню) */
+.sidebar {
+    width: var(--sidebar-width);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 40px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    opacity: 0.8;
+}
+
+.nav-item:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: var(--text-primary);
+    background-color: var(--element-bg);
+}
+
+.nav-item.active svg {
+    opacity: 1;
+}
+
+.logout {
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+/* Основной контент */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    width: 100%;
+    max-width: var(--content-max-width);
+}
+
+.profile-container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Шапка профиля */
+.profile-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-banner {
+    width: 100%;
+    height: 200px;
+    background-color: var(--element-bg);
+    border-radius: 20px;
+}
+
+.profile-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 20px;
+    margin-top: -50px;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    background-color: #1a1a1c;
+    border-radius: 50%;
+    border: 6px solid #121212; /* Рамка цвета фона для эффекта выреза */
+}
+
+.edit-profile-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    transition: opacity 0.2s;
+}
+
+.edit-profile-btn:hover {
+    opacity: 0.9;
+}
+
+/* Информация профиля */
+.profile-info {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-name-block {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.profile-handle {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.profile-stats {
+    display: flex;
+    gap: 24px;
+}
+
+.stat-item {
+    font-size: 14px;
+}
+
+.stat-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+}
+
+.profile-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.profile-date svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+
+/* Вкладки */
+.profile-tabs-container {
+    background-color: #1a1a1c;
+    border-radius: 16px;
+    display: flex;
+    padding: 4px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background-color: #333336;
+    color: var(--text-primary);
+}
+
+/* Блок создания поста */
+.create-post-block {
+    background-color: #1a1a1c;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-input-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--element-bg);
+    flex-shrink: 0;
+}
+
+.post-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.post-input::placeholder {
+    color: #555555;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 56px; /* Выравнивание по линии инпута */
+}
+
+.action-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.publish-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: not-allowed;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.publish-btn.active {
+    background-color: var(--text-primary);
+    color: #000;
+    cursor: pointer;
+}
+
+.publish-btn.active:hover {
+    background-color: #e5e5e5;
+}

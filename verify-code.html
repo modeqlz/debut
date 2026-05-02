@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ввод кода - DDE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">DDE</div>
+        
+        <div class="header">
+            <h1>Введите код</h1>
+            <p>Мы отправили шестизначный код на<br>brawlstars@gmail.com</p>
+        </div>
+
+        <form id="verifyCodeForm" class="form">
+            <div class="input-group">
+                <label>Код с почты</label>
+                <div class="code-inputs-group" id="codeInputs">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                </div>
+                <span class="error-message" id="codeError"></span>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Продолжить</button>
+            <div class="timer-text" id="timerText">Получить новый код через 20с</div>
+            <div id="formMessage" class="form-message"></div>
+        </form>
+
+        <div class="back-link">
+            <a href="forgot-password.html">Назад</a>
+        </div>
+    </div>
+
+    <script type="module" src="verify-code.js"></script>
+</body>
+</html>
